@@ -2,16 +2,16 @@
   'use strict';
 
   angular.module('quizApp')
-         .controller('chatCtrl', chatCtrl);
+         .controller('listCtrl', listCtrl);
 
-  chatCtrl.$inject = ['ChatService'];
+  //listCtrl.$inject = ['ChatService'];
 
   /* @ngInject */
-  function chatCtrl(ChatService) {
+  function listCtrl() {
     /* jshint validthis: true */
     var vm = this;
 
-    vm.title = 'chatCtrl';
+    vm.title = 'listCtrl';
     vm.scrollBottom = scrollBottom;
 
     // vm.messages = ChatService.getMessages();

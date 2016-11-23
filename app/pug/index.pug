@@ -1,8 +1,8 @@
 extends _modules/layout
 block body
-  .wrapper(ng-cloak)
-    //- include _modules/header
-    main.main
-      .container
-        section.section-chat(ng-controller="chatCtrl as chat")
-    //- include _modules/footer
+  main(ng-cloak).main
+    .container
+      section
+        h1 Turtle facts Quiz
+        h2 Learn about turtles below
+        div(ng-controller="listCtrl as list") {{list.title}}   
