@@ -2,20 +2,27 @@
   'use strict';
   
   angular.module('quizApp')
-    .service('ListService', ListService);
+    .factory('ListService', ListService);
   
   ListService.$inject = ['$http'];
   
   /* @ngInject */
   function ListService($http) {
-    this.getInformation = getInformation;
+    var promise;
+    var service = {
+      async: function() {
+        if ( !promise ) {
+          promise = $http.get('./server-data/information.json')
+            .then(function (response) {
+              return response;
+            });
+        }
+        
+        return promise;
+      }
+    };
     
     ////////////////
-    
-    function getInformation() {
-      $http.get('./server-data/information.json', function (data) {
-        console.log(data);
-      });
-    }
+    return service;
   }
 })();

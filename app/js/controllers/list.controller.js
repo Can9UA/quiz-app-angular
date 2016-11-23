@@ -2,22 +2,24 @@
   'use strict';
 
   angular.module('quizApp')
-         .controller('listCtrl', listCtrl);
+         .controller('ListCtrl', ListCtrl);
 
-  listCtrl.$inject = ['ListService'];
+  ListCtrl.$inject = ['ListService'];
 
   /* @ngInject */
-  function listCtrl(ListService) {
+  function ListCtrl(ListService) {
     /* jshint validthis: true */
     var vm = this;
 
-    vm.title = 'listCtrl';
-    vm.data = ListService.getInformation();
-
+    vm.title = 'ListCtrl';
+    
+    ListService
+      .async()
+      .then(function (response) {
+        vm.data = response;
+      });
+    
     ////////////////
-
-    function success() {
-    }
 
   }
 })();
