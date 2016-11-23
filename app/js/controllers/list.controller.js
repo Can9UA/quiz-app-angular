@@ -4,21 +4,19 @@
   angular.module('quizApp')
          .controller('listCtrl', listCtrl);
 
-  //listCtrl.$inject = ['ChatService'];
+  listCtrl.$inject = ['ListService'];
 
   /* @ngInject */
-  function listCtrl() {
+  function listCtrl(ListService) {
     /* jshint validthis: true */
     var vm = this;
 
     vm.title = 'listCtrl';
-    vm.scrollBottom = scrollBottom;
-
-    // vm.messages = ChatService.getMessages();
+    vm.data = ListService.getInformation();
 
     ////////////////
 
-    function scrollBottom() {
+    function success() {
     }
 
   }
