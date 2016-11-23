@@ -1,0 +1,8 @@
+{
+  "name": "quizAppw",
+  "private": true,
+  "devDependencies": {},
+  "dependencies": {
+    "angular": "^1.5.8"
+  }
+}
