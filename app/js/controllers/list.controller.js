@@ -8,7 +8,6 @@
 
   /* @ngInject */
   function ListCtrl(ListService) {
-    /* jshint validthis: true */
     var vm = this;
 
     vm.title = 'ListCtrl';
