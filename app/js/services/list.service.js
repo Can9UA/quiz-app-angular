@@ -9,7 +9,7 @@
   /* @ngInject */
   function ListService($http) {
     return {
-      async: function() {
+      load: function() {
         return $http.get('./server-data/information.json');
       }
     };

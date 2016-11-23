@@ -14,9 +14,9 @@
     vm.title = 'ListCtrl';
     
     ListService
-      .async()
+      .load()
       .then(function (response) {
-        vm.data = response;
+        vm.data = response.data;
       });
     
     ////////////////
