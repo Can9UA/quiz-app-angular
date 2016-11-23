@@ -8,21 +8,10 @@
   
   /* @ngInject */
   function ListService($http) {
-    var promise;
-    var service = {
+    return {
       async: function() {
-        if ( !promise ) {
-          promise = $http.get('./server-data/information.json')
-            .then(function (response) {
-              return response;
-            });
-        }
-        
-        return promise;
+        return $http.get('./server-data/information.json');
       }
     };
-    
-    ////////////////
-    return service;
   }
 })();
