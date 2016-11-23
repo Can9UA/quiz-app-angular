@@ -13,7 +13,9 @@
     ////////////////
     
     function getInformation() {
-      $http.get('server-data/information.json');
+      $http.get('./server-data/information.json', function (data) {
+        console.log(data);
+      });
     }
   }
 })();
