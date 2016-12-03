@@ -9,43 +9,48 @@
   
   /* @ngInject */
   function QuizCtrl(QuizMetrics, DataService) {
-    var vm = this;
+    var vm                = this;
     var questionsAnswered = 0;
-    var questionsCount = 0;
+    var questionsCount    = 0;
     
-    vm.quizMetircs = QuizMetrics;
-    vm.dataService = DataService;
-    vm.activeQuestion = 0;
-    vm.questionAnswered = questionAnswered;
+    vm.quizMetircs       = QuizMetrics;
+    vm.dataService       = DataService;
+    vm.activeQuestion    = 0;
+    vm.questionAnswered  = questionAnswered;
     vm.setActiveQuestion = setActiveQuestion;
-    vm.questions = [];
+    vm.questions         = [];
+    vm.selectAnswer      = selectAnswer;
     
     DataService.getQuizQuestionsData()
       .then(function (response) {
-        vm.questions = response.data;
+        vm.questions   = response.data;
         questionsCount = vm.questions.length;
       });
     
     ////////////////
     
+    function selectAnswer(index) {
+      vm.questions[vm.activeQuestion].selected = index;
+    }
+    
     function setActiveQuestion() {
       var breakOut = false;
       
-      while(!breakOut) {
+      while (!breakOut) {
         vm.activeQuestion = vm.activeQuestion < questionsCount - 1 ? ++vm.activeQuestion : 0;
         
-        if (questions[vm.activeQuestion].selected === null) {
+        if (vm.questions[vm.activeQuestion].selected === null) {
           breakOut = true;
         }
       }
       
-      vm.activeQuestion++;
+      //vm.activeQuestion++;
     }
     
     function questionAnswered() {
       if (vm.questions[vm.activeQuestion] !== null) {
         questionsAnswered++;
-  
+        
         if (questionsAnswered >= questionsCount) {
           
         }

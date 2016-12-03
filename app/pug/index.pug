@@ -9,7 +9,7 @@ block body
           .well.well-sm.clearfix
             form.form-inline.pull-right
               span.glyphicon.glyphicon-search
-               input(type="text" placeholder="Search.." ng-model="list.search").form-control
+                input(type="text" placeholder="Search.." ng-model="list.search").form-control
             button(type="button" ng-click="list.activateQuiz()").btn.btn-warning
               strong Start Quiz
           .row
@@ -68,9 +68,9 @@ block body
             .col-xs-8
               h4 Progress:
               .btn-toolbar
-                button(ng-repeat="question in quiz.questions" 
-                  ng-class="{'btn-info': question.selected, 'btn-danger': !question.selected()}").btn
-                  span(ng-class="{'glyphicon-pencil': question.selected, 'glyphicon-question-sign': !question.selected}").glyphicon
+                button(ng-repeat="question in quiz.questions"
+                ng-class="{'btn-info': question.selected !== null, 'btn-danger': question.selected === null}").btn
+                  span(ng-class="{'glyphicon-pencil': question.selected !== null, 'glyphicon-question-sign': question.selected === null}").glyphicon
             .col-xs-4
               .row
                 h4 Legend:
@@ -88,7 +88,12 @@ block body
               .row
                 .col-xs-12
                   h4 {{quiz.activeQuestion + 1 + '. ' + quiz.questions[quiz.activeQuestion].text}}
-                  .row
+                  div(ng-if="quiz.questions[quiz.activeQuestion].type === 'text'").row
                     div(ng-repeat="answer in quiz.questions[quiz.activeQuestion].possibilities").col-sm-6
-                      button.btn.btn-success {{answer.answer}}
+                      button(ng-class="{'btn-info': $index == quiz.questions[quiz.activeQuestion].selected}"
+                      ng-click="quiz.selectAnswer($index)").btn {{answer.answer}}
+                  div(ng-if="quiz.questions[quiz.activeQuestion].type === 'image'").row
+                    div(ng-repeat="answer in quiz.questions[quiz.activeQuestion].possibilities").col-sm-6
+                      .image-answer(ng-click="quiz.selectAnswer($index)")
+                        img(ng-src="{{answer.answer}}").img-responsive.img-rounded
             button(ng-click="quiz.questionAnswered()").btn.btn-warning Continue

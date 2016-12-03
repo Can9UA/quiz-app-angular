@@ -1,21 +1,21 @@
-(function() {
+(function () {
   'use strict';
-
+  
   angular.module('quizApp')
-         .controller('ListCtrl', ListCtrl);
-
+    .controller('ListCtrl', ListCtrl);
+  
   ListCtrl.$inject = ['DataService', 'QuizMetrics'];
-
+  
   /* @ngInject */
   function ListCtrl(DataService, QuizMetrics) {
     var vm = this;
-
-    vm.quizMetircs = QuizMetrics;
-    vm.activeItem = {}
+    
+    vm.quizMetircs      = QuizMetrics;
+    vm.activeItem       = {}
     vm.changeActiveItem = changeActiveItem;
-    vm.search = '';
-    vm.activateQuiz = activateQuiz;
-  
+    vm.search           = '';
+    vm.activateQuiz     = activateQuiz;
+    
     DataService.getQuizItemsData()
       .then(function (response) {
         vm.data = response.data;
