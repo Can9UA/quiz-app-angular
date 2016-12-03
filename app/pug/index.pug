@@ -5,11 +5,13 @@ block body
       section.quiz
         h1 Turtle facts Quiz
         h2 Learn about turtles below
-        div(ng-controller="ListCtrl as list")
-          form.form-inline.well.well-sm.clearfix
-            .pull-right
+        div(ng-controller="ListCtrl as list" ng-hide="list.quizMetircs.quizActive")
+          .well.well-sm.clearfix
+            form.form-inline.pull-right
               span.glyphicon.glyphicon-search
-              input(type="text" placeholder="Search.." ng-model="list.search").form-control
+               input(type="text" placeholder="Search.." ng-model="list.search").form-control
+            button(type="button" ng-click="list.activateQuiz()").btn.btn-warning
+              strong Start Quiz
           .row
             .col-sm-6(ng-repeat="item in list.data | filter:list.search")
               .well.well-sm
@@ -31,7 +33,7 @@ block body
                       strong Diet: 
                       | {{item.diet}}
                     button(data-toggle="modal" data-target="#item-info"
-                      ng-click="list.changeActiveItem(item)").btn.btn-primary.pull-right Learn more
+                    ng-click="list.changeActiveItem(item)").btn.btn-primary.pull-right Learn more
           #item-info.modal
             .modal-dialog
               .modal-content
@@ -60,3 +62,5 @@ block body
                       h3 Description:
                       p {{list.activeItem.description}}
                       button(data-dismiss="modal").btn.btn-danger.pull-right Close
+        div(ng-controller="QuizCtrl as quiz" ng-show="quiz.quizMetircs.quizActive")
+          h1 Quiz Test
