@@ -2,7 +2,7 @@ extends _modules/layout
 block body
   main(ng-cloak).main
     .container
-      section
+      section.quiz
         h1 Turtle facts Quiz
         h2 Learn about turtles below
         div(ng-controller="ListCtrl as list")
@@ -15,7 +15,7 @@ block body
               .well.well-sm
                 .row
                   .col-md-6
-                    img(ng-src="{{item.imageUrl}}" title="{{item.type}}" alt="{{item.type}}").img-rounded.img-responsive
+                    img(ng-src="{{item.imageUrl}}" title="{{item.type}}" alt="{{item.type}}").img-item.img-rounded.img-responsive
                   .col-md-6
                     h4 {{item.type}}
                     p
