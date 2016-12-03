@@ -11,14 +11,18 @@
     var vm = this;
 
     vm.title = 'ListCtrl';
+    vm.activeItem = {}
+    vm.changeActiveItem = changeActiveItem;
     
-    ListService
-      .load()
+    ListService.load()
       .then(function (response) {
         vm.data = response.data;
       });
     
     ////////////////
-
+    
+    function changeActiveItem(item) {
+      vm.activeItem = item;
+    }
   }
 })();

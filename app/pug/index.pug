@@ -11,5 +11,48 @@ block body
               .well.well-sm
                 .row
                   .col-md-6
-                    img(ng-src="{{item.imageUrl}}" alt="")
-              | {{item.type}}
+                    img(ng-src="{{item.imageUrl}}" title="{{item.type}}" alt="{{item.type}}").img-rounded.img-responsive
+                  .col-md-6
+                    h4 {{item.type}}
+                    p
+                      strong Location: 
+                      | {{item.locations}}
+                    p
+                      strong Size: 
+                      | {{item.size}}
+                    p
+                      strong Average Lifespan: 
+                      | {{item.lifespan}}
+                    p
+                      strong Diet: 
+                      | {{item.diet}}
+                    button(data-toggle="modal" data-target="#item-info"
+                      ng-click="list.changeActiveItem(item)").btn.btn-primary.pull-right Learn more
+          #item-info.modal
+            .modal-dialog
+              .modal-content
+                .modal-header
+                  h2 {{list.activeItem.type}}
+                .modal-body
+                  .row
+                    .col-xs-8.col-xs-offset-2
+                      img(ng-src="{{list.activeItem.imageUrl}}" alt="{{list.activeItem.type}}" title="{{list.activeItem.type}}").img-rounded.img-responsive
+                      br
+                      br
+                  .row
+                    .col-xs-12
+                      p
+                        strong Location: 
+                        | {{list.activeItem.locations}}
+                      p
+                        strong Size: 
+                        | {{list.activeItem.size}}
+                      p
+                        strong Average Lifespan: 
+                        | {{list.activeItem.lifespan}}
+                      p
+                        strong Diet: 
+                        | {{list.activeItem.diet}}
+                      h3 Description:
+                      p {{list.activeItem.description}}
+                      button(data-dismiss="modal").btn.btn-danger.pull-right Close
