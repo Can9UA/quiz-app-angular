@@ -5,14 +5,18 @@
     .module('quizApp')
     .controller('QuizCtrl', QuizCtrl);
   
-  QuizCtrl.$inject = ['QuizMetrics'];
+  QuizCtrl.$inject = ['QuizMetrics', 'DataService'];
   
   /* @ngInject */
-  function QuizCtrl(QuizMetrics) {
-    var vm   = this;
+  function QuizCtrl(QuizMetrics, DataService) {
+    var vm = this;
     
     vm.quizMetircs = QuizMetrics;
     
+    DataService.getQuizQuestionsData()
+      .then(function (response) {
+        vm.questions = response.data;
+      });
     ////////////////
     
   }

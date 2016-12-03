@@ -4,10 +4,10 @@
   angular.module('quizApp')
          .controller('ListCtrl', ListCtrl);
 
-  ListCtrl.$inject = ['ListService', 'QuizMetrics'];
+  ListCtrl.$inject = ['DataService', 'QuizMetrics'];
 
   /* @ngInject */
-  function ListCtrl(ListService, QuizMetrics) {
+  function ListCtrl(DataService, QuizMetrics) {
     var vm = this;
 
     vm.quizMetircs = QuizMetrics;
@@ -15,8 +15,8 @@
     vm.changeActiveItem = changeActiveItem;
     vm.search = '';
     vm.activateQuiz = activateQuiz;
-    
-    ListService.load()
+  
+    DataService.getQuizItemsData()
       .then(function (response) {
         vm.data = response.data;
       });

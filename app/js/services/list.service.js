@@ -2,16 +2,27 @@
   'use strict';
   
   angular.module('quizApp')
-    .factory('ListService', ListService);
+    .factory('DataService', DataService);
   
-  ListService.$inject = ['$http'];
+  DataService.$inject = ['$http'];
   
   /* @ngInject */
-  function ListService($http) {
-    return {
-      load: function() {
-        return $http.get('./server-data/information.json');
-      }
-    };
+  function DataService($http) {
+    var dataObj = {
+      getQuizItemsData: getQuizItemsData,
+      getQuizQuestionsData: getQuizQuestionsData
+    }
+    
+    return dataObj;
+    
+    ////////////////
+    
+    function getQuizItemsData() {
+      return $http.get('./server-data/information.json');
+    }
+    
+    function getQuizQuestionsData() {
+      return $http.get('./server-data/questions.json');
+    }
   }
 })();

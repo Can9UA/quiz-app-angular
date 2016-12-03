@@ -62,5 +62,23 @@ block body
                       h3 Description:
                       p {{list.activeItem.description}}
                       button(data-dismiss="modal").btn.btn-danger.pull-right Close
-        div(ng-controller="QuizCtrl as quiz" ng-show="quiz.quizMetircs.quizActive")
-          h1 Quiz Test
+        section(ng-controller="QuizCtrl as quiz" ng-show="quiz.quizMetircs.quizActive")
+          h3 Turtle Facts Quiz
+          .row
+            .col-xs-8
+              h4 Progress:
+              .btn-toolbar
+                button(ng-repeat="question in quiz.questions" 
+                  ng-class="{'btn-info': question.selected, 'btn-danger': !question.selected()}").btn
+                  span(ng-class="{'glyphicon-pencil': question.selected, 'glyphicon-question-sign': !question.selected}").glyphicon
+            .col-xs-4
+              .row
+                h4 Legend:
+                .col-sm-4
+                  button.btn.btn-info
+                    span.glyphicon.glyphicon-pencil
+                  p Answered
+                .col-sm-4
+                  button.btn.btn-danger
+                    span.glyphicon.glyphicon-question-sign
+                  p Unanswered
