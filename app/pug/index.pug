@@ -6,8 +6,12 @@ block body
         h1 Turtle facts Quiz
         h2 Learn about turtles below
         div(ng-controller="ListCtrl as list")
+          form.form-inline.well.well-sm.clearfix
+            .pull-right
+              span.glyphicon.glyphicon-search
+              input(type="text" placeholder="Search.." ng-model="list.search").form-control
           .row
-            .col-sm-6(ng-repeat="item in list.data")
+            .col-sm-6(ng-repeat="item in list.data | filter:list.search")
               .well.well-sm
                 .row
                   .col-md-6

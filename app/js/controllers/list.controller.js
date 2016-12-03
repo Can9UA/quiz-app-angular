@@ -13,6 +13,7 @@
     vm.title = 'ListCtrl';
     vm.activeItem = {}
     vm.changeActiveItem = changeActiveItem;
+    vm.search = '';
     
     ListService.load()
       .then(function (response) {
