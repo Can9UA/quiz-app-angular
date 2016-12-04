@@ -16,19 +16,20 @@
     vm.search           = '';
     vm.activateQuiz     = activateQuiz;
     
-    DataService.getQuizItemsData()
-      .then(function (response) {
-        vm.data = response.data;
-      });
+    //DataService.getQuizItemsData()
+    //  .then(function (response) {
+    //    vm.data = response.data;
+    //  });
+    vm.data = DataService.data;
     
-    ////////////////
+      ////////////////
     
     function changeActiveItem(item) {
       vm.activeItem = item;
     }
     
     function activateQuiz() {
-      QuizMetrics.changeState(true);
+      QuizMetrics.changeState('quiz', true);
     }
   }
 })();

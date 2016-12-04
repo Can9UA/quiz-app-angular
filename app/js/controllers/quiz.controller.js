@@ -22,14 +22,26 @@
     vm.selectAnswer      = selectAnswer;
     vm.error             = false;
     vm.finalise          = false;
+    vm.finaliseAnswers   = finaliseAnswers;
     
-    DataService.getQuizQuestionsData()
-      .then(function (response) {
-        vm.questions   = response.data;
-        questionsCount = vm.questions.length;
-      });
+    //DataService.getQuizQuestionsData()
+    //  .then(function (response) {
+    //    vm.questions   = response.data;
+    //    questionsCount = vm.questions.length;
+    //  });
+    vm.questions   = DataService.questions;
+    questionsCount = vm.questions.length;
     
     ////////////////
+    function finaliseAnswers() {
+      vm.finalise       = false;
+      questionsAnswered = 0;
+      vm.activeQuestion = 0;
+      
+      quizMetircs.markQuiz();
+      quizMetircs.changeState('quiz', false);
+      quizMetircs.changeState('results', true);
+    }
     
     function selectAnswer(index) {
       vm.questions[vm.activeQuestion].selected = index;
