@@ -20,6 +20,8 @@
     vm.setActiveQuestion = setActiveQuestion;
     vm.questions         = [];
     vm.selectAnswer      = selectAnswer;
+    vm.error             = false;
+    vm.finalise          = false;
     
     DataService.getQuizQuestionsData()
       .then(function (response) {
@@ -38,11 +40,12 @@
         vm.activeQuestion = index;
       } else {
         var breakOut = false;
-  
+        
         while (!breakOut) {
           vm.activeQuestion = vm.activeQuestion < questionsCount - 1 ? ++vm.activeQuestion : 0;
-    
-          if (vm.questions[vm.activeQuestion].selected === null) {
+          
+          if (vm.questions[vm.activeQuestion].selected === null || vm.activeQuestion >= questionsCount - 1) {
+            vm.error = false;
             breakOut = true;
           }
         }
@@ -50,11 +53,15 @@
     }
     
     function questionAnswered() {
-      if (vm.questions[vm.activeQuestion] !== null) {
+      if (vm.questions[vm.activeQuestion].selected !== null) {
         questionsAnswered++;
         
         if (questionsAnswered >= questionsCount) {
           
+          vm.error    = false;
+          vm.finalise = true;
+          
+          return;
         }
       }
       
