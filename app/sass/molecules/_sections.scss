@@ -21,4 +21,11 @@
     height: 100%;
     max-width: 100%;
   }
+  &.image-selected {
+    outline: 2px solid #315fff;
+  }
+}
+button {outline: none !important;}
+button.btn-active {
+  border: 2px solid #315fff;
 }

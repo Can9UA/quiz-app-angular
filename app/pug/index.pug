@@ -66,10 +66,10 @@ block body
           h3 Turtle Facts Quiz
           .row
             .col-xs-8
-              h4 Progress:
+              h4 Progress: {{quiz.questions[quiz.activeQuestion].selected}}
               .btn-toolbar
                 button(ng-repeat="question in quiz.questions"
-                ng-class="{'btn-info': question.selected !== null, 'btn-danger': question.selected === null}").btn
+                ng-class="{'btn-info': question.selected !== null, 'btn-danger': question.selected === null, 'btn-active': $index == quiz.activeQuestion}" ng-click="quiz.setActiveQuestion($index)").btn
                   span(ng-class="{'glyphicon-pencil': question.selected !== null, 'glyphicon-question-sign': question.selected === null}").glyphicon
             .col-xs-4
               .row
@@ -84,6 +84,7 @@ block body
                   p Unanswered
           .row
             h3 Question:
+            button(ng-click="quiz.questionAnswered()").btn.btn-warning.pull-right Continue
             .well.well-sm.questions
               .row
                 .col-xs-12
@@ -94,6 +95,5 @@ block body
                       ng-click="quiz.selectAnswer($index)").btn {{answer.answer}}
                   div(ng-if="quiz.questions[quiz.activeQuestion].type === 'image'").row
                     div(ng-repeat="answer in quiz.questions[quiz.activeQuestion].possibilities").col-sm-6
-                      .image-answer(ng-click="quiz.selectAnswer($index)")
+                      .image-answer(ng-click="quiz.selectAnswer($index)" ng-class="{'image-selected': $index == quiz.questions[quiz.activeQuestion].selected}")
                         img(ng-src="{{answer.answer}}").img-responsive.img-rounded
-            button(ng-click="quiz.questionAnswered()").btn.btn-warning Continue

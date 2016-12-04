@@ -33,18 +33,20 @@
       vm.questions[vm.activeQuestion].selected = index;
     }
     
-    function setActiveQuestion() {
-      var breakOut = false;
-      
-      while (!breakOut) {
-        vm.activeQuestion = vm.activeQuestion < questionsCount - 1 ? ++vm.activeQuestion : 0;
-        
-        if (vm.questions[vm.activeQuestion].selected === null) {
-          breakOut = true;
+    function setActiveQuestion(index) {
+      if (index !== undefined) {
+        vm.activeQuestion = index;
+      } else {
+        var breakOut = false;
+  
+        while (!breakOut) {
+          vm.activeQuestion = vm.activeQuestion < questionsCount - 1 ? ++vm.activeQuestion : 0;
+    
+          if (vm.questions[vm.activeQuestion].selected === null) {
+            breakOut = true;
+          }
         }
       }
-      
-      //vm.activeQuestion++;
     }
     
     function questionAnswered() {
