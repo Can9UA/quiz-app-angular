@@ -5,7 +5,7 @@ block body
       section.quiz
         h1 Turtle facts Quiz
         h2 Learn about turtles below
-        section(ng-controller="ListCtrl as list" ng-hide="list.quizMetircs.quizActive")
+        section(ng-controller="ListCtrl as list" ng-hide="list.quizMetircs.quizActive || list.quizMetircs.resultsActive")
           .well.well-sm.clearfix
             form.form-inline.pull-right
               span.glyphicon.glyphicon-search
