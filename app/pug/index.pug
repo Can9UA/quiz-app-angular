@@ -106,3 +106,5 @@ block body
                   h3 Are you sure you want to submit your nanswers?
                   buttton(ng-click="quiz.finaliseAnswers()").btn.btn-success Yes
                   buttton(ng-click="quiz.finalise = false").btn.btn-danger No
+        section(ng-controller="ResultsCtrl as results" ng-show="results.quizMetrics.resultsActive")
+          h1 Hellow 

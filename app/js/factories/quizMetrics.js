@@ -14,7 +14,7 @@
       resultsActive : false,
       changeState   : changeState,
       markQuiz      : markQuiz,
-      currectAnswers: [],
+      correctAnswers: [],
       numCurrect    : 0
     };
   

@@ -8,11 +8,11 @@
   
   /* @ngInject */
   function DataService($http) {
-    var currectAnswers = [1, 2, 3, 0, 2, 0, 3, 2, 0, 3];
+    var correctAnswers = [1, 2, 3, 0, 2, 0, 3, 2, 0, 3];
     var dataObj = {
       //getQuizItemsData: getQuizItemsData,
       //getQuizQuestionsData: getQuizQuestionsData,
-      currectAnswers: currectAnswers
+      correctAnswers: correctAnswers
     }
     
     init();

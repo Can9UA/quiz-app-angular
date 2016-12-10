@@ -38,9 +38,9 @@
       questionsAnswered = 0;
       vm.activeQuestion = 0;
       
-      quizMetircs.markQuiz();
-      quizMetircs.changeState('quiz', false);
-      quizMetircs.changeState('results', true);
+      vm.quizMetircs.markQuiz();
+      vm.quizMetircs.changeState('quiz', false);
+      vm.quizMetircs.changeState('results', true);
     }
     
     function selectAnswer(index) {
