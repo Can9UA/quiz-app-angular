@@ -28,7 +28,7 @@
       quizObj.correctAnswers = DataService.correctAnswers;
       
       for (var i = 0, len = data.length; i < len; i++) {
-        if (data[i].selected === quizObj.correctAnswers[i]) {
+        if (data[i].selected == quizObj.correctAnswers[i]) {
           data[i].correct = true;
           quizObj.numCurrect++;
         } else {

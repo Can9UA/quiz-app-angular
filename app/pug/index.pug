@@ -107,4 +107,20 @@ block body
                   buttton(ng-click="quiz.finaliseAnswers()").btn.btn-success Yes
                   buttton(ng-click="quiz.finalise = false").btn.btn-danger No
         section(ng-controller="ResultsCtrl as results" ng-show="results.quizMetrics.resultsActive")
-          h1 Hellow 
+          .row
+            .col-xs-8
+              h2 Results:
+              .btn-toolbar
+                button(ng-click="results.setActiveQuestion($index)" ng-repeat="question in results.data.data" ng-class="{'btn-success': question.correct, 'btn-danger': !question.correct}").btn
+                  span(ng-class="{'glyphicon-ok': question.correct, 'glyphicon-remove': !question.correct}").glyphicon
+            .col-xs-4
+              .row
+                h4 Legend:
+                .col-sm-4
+                  button().btn.btn-success
+                    span.glyphicon.glyphicon-ok
+                  p Correct
+                .col-sm-4
+                  button.btn.btn-danger
+                    span.glyphicon.glyphicon-remove
+                  p Incorrect

@@ -8,7 +8,8 @@
   
   /* @ngInject */
   function DataService($http) {
-    var correctAnswers = [1, 2, 3, 0, 2, 0, 3, 2, 0, 3];
+    //var correctAnswers = [1, 2, 3, 0, 2, 0, 3, 2, 0, 3];
+    var correctAnswers = [1, 2, 3, 0, 2, 0, 3, 2];
     var dataObj = {
       //getQuizItemsData: getQuizItemsData,
       //getQuizQuestionsData: getQuizQuestionsData,
@@ -252,46 +253,6 @@
             },
             {
               "answer": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Kemp's_Ridley_sea_turtle_nesting.JPG"
-            }
-          ],
-          "selected": null,
-          "correct": null
-        },
-        {
-          "type": "text",
-          "text": "How Heavy can a leatherback turtle be?",
-          "possibilities": [
-            {
-              "answer": "900kg"
-            },
-            {
-              "answer": "40kg"
-            },
-            {
-              "answer": "110kg"
-            },
-            {
-              "answer": "300kg"
-            }
-          ],
-          "selected": null,
-          "correct": null
-        },
-        {
-          "type": "text",
-          "text": "Which of these turtles are herbivores?",
-          "possibilities": [
-            {
-              "answer": "Loggerhead Turtle"
-            },
-            {
-              "answer": "Hawksbill Turtle"
-            },
-            {
-              "answer": "Leatherback Turtle"
-            },
-            {
-              "answer": "Green Turtle"
             }
           ],
           "selected": null,

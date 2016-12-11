@@ -31,6 +31,7 @@
     //  });
     vm.questions   = DataService.questions;
     questionsCount = vm.questions.length;
+    vm.data        = DataService.data;
     
     ////////////////
     function finaliseAnswers() {
@@ -45,6 +46,7 @@
     
     function selectAnswer(index) {
       vm.questions[vm.activeQuestion].selected = index;
+      vm.data[vm.activeQuestion].selected = index;
     }
     
     function setActiveQuestion(index) {
