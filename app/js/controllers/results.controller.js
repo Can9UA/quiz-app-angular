@@ -13,6 +13,7 @@
     
     vm.quizMetrics = QuizMetrics;
     vm.data = DataService;
+    vm.activeQuestion = 0;
     
     ////////////////
     

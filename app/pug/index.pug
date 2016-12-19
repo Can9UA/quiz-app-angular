@@ -124,3 +124,12 @@ block body
                   button.btn.btn-danger
                     span.glyphicon.glyphicon-remove
                   p Incorrect
+          .row
+            h3 Questions:
+            .well.well-sm.questions
+              .row
+                .col-xs-12
+                  h4 {{results.activeQuestion + 1 + '. ' + results.data.questions[results.activeQuestion].text}}
+                  .row
+                    div(ng-repeat="answer in results.data.questions[results.activeQuestion].possibilities").col-sm-6
+                      button(type="button)").btn {{answer.answer}}
