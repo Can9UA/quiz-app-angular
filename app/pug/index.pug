@@ -132,4 +132,6 @@ block body
                   h4 {{results.activeQuestion + 1 + '. ' + results.data.questions[results.activeQuestion].text}}
                   .row
                     div(ng-repeat="answer in results.data.questions[results.activeQuestion].possibilities").col-sm-6
-                      button(type="button)").btn {{answer.answer}}
+                     button(ng-class="results.getAnswerClass($index)").btn {{answer.answer}}
+                        p(ng-show="$index !== results.quizMetrics.correctAnswers[results.activeQuestion] && $index === results.data.questions[results.activeQuestion].selected").pull-right Your Answer
+                        p(ng-show="$index === results.quizMetrics.correctAnswers[results.activeQuestion]").pull-right Correct Answer
