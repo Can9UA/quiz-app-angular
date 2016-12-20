@@ -125,13 +125,22 @@ block body
                     span.glyphicon.glyphicon-remove
                   p Incorrect
           .row
+            .col-xs-12
+              h2 You Scored {{results.quizMetrics.numCorrect}} / {{results.data.questions.length}}
+              h3
+                strong {{results.calculatePerc() | number:2}} %
+          .row
             h3 Questions:
             .well.well-sm.questions
               .row
                 .col-xs-12
                   h4 {{results.activeQuestion + 1 + '. ' + results.data.questions[results.activeQuestion].text}}
-                  .row
+                  div(ng-if="results.data.questions[results.activeQuestion].type === 'text'").row
                     div(ng-repeat="answer in results.data.questions[results.activeQuestion].possibilities").col-sm-6
                      button(ng-class="results.getAnswerClass($index)").btn {{answer.answer}}
                         p(ng-show="$index !== results.quizMetrics.correctAnswers[results.activeQuestion] && $index === results.data.questions[results.activeQuestion].selected").pull-right Your Answer
                         p(ng-show="$index === results.quizMetrics.correctAnswers[results.activeQuestion]").pull-right Correct Answer
+                  div(ng-if="results.data.questions[results.activeQuestion].type === 'image'").row
+                    div(ng-repeat="answer in results.data.questions[results.activeQuestion].possibilities").col-sm-6
+                      button(ng-class="results.getAnswerClass($index)").btn
+                        img.image-answer(ng-src="{{answer.answer}}")

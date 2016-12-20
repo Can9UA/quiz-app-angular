@@ -15,8 +15,17 @@
     vm.data = DataService;
     vm.activeQuestion = 0;
     vm.getAnswerClass = getAnswerClass;
+    vm.setActiveQuestion = setActiveQuestion;
+    vm.calculatePerc = calculatePerc;
     
     ////////////////
+    function calculatePerc() {
+      return (vm.quizMetrics.numCorrect / vm.data.questions.length) * 100;
+    }
+    
+    function setActiveQuestion(index) {
+      vm.activeQuestion = index;
+    }
     
     function getAnswerClass(index) {
       if (index === vm.quizMetrics.correctAnswers[vm.activeQuestion]) {
