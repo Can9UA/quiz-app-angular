@@ -158,45 +158,5 @@
     ],
     "selected": null,
     "correct": null
-  },
-  {
-    "type": "text",
-    "text": "How Heavy can a leatherback turtle be?",
-    "possibilities": [
-      {
-        "answer": "900kg"
-      },
-      {
-        "answer": "40kg"
-      },
-      {
-        "answer": "110kg"
-      },
-      {
-        "answer": "300kg"
-      }
-    ],
-    "selected": null,
-    "correct": null
-  },
-  {
-    "type": "text",
-    "text": "Which of these turtles are herbivores?",
-    "possibilities": [
-      {
-        "answer": "Loggerhead Turtle"
-      },
-      {
-        "answer": "Hawksbill Turtle"
-      },
-      {
-        "answer": "Leatherback Turtle"
-      },
-      {
-        "answer": "Green Turtle"
-      }
-    ],
-    "selected": null,
-    "correct": null
   }
 ]
