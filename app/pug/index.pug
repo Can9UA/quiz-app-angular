@@ -75,12 +75,10 @@ block body
               .row
                 h4 Legend:
                 .col-sm-4
-                  button.btn.btn-info
-                    span.glyphicon.glyphicon-pencil
+                  button.btn.btn-info: span.glyphicon.glyphicon-pencil
                   p Answered
                 .col-sm-4
-                  button.btn.btn-danger
-                    span.glyphicon.glyphicon-question-sign
+                  button.btn.btn-danger: span.glyphicon.glyphicon-question-sign
                   p Unanswered
           .row
             div(ng-show="quiz.error").alert.alert-danger
@@ -88,7 +86,7 @@ block body
               button(ng-click="quiz.error = false").close &times;
             h3 Question:
             button(ng-click="quiz.questionAnswered()").btn.btn-warning.pull-right Continue
-            .well.well-sm.questions
+            div(ng-hide="quiz.finalise").well.well-sm.questions
               .row
                 .col-xs-12
                   h4 {{quiz.activeQuestion + 1 + '. ' + quiz.questions[quiz.activeQuestion].text}}
@@ -117,18 +115,15 @@ block body
               .row
                 h4 Legend:
                 .col-sm-4
-                  button().btn.btn-success
-                    span.glyphicon.glyphicon-ok
+                  button().btn.btn-success: span.glyphicon.glyphicon-ok
                   p Correct
                 .col-sm-4
-                  button.btn.btn-danger
-                    span.glyphicon.glyphicon-remove
+                  button.btn.btn-danger: span.glyphicon.glyphicon-remove
                   p Incorrect
           .row
             .col-xs-12
               h2 You Scored {{results.quizMetrics.numCorrect}} / {{results.questions.length}}
-              h3
-                strong {{results.calculatePerc() | number:2}} %
+              h3: strong {{results.calculatePerc() | number:2}} %
           .row
             h3 Questions:
             .well.well-sm.questions
