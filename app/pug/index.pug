@@ -13,7 +13,7 @@ block body
             button(type="button" ng-click="list.activateQuiz()").btn.btn-warning
               strong Start Quiz
           .row
-            .col-sm-6(ng-repeat="item in list.data | filter:list.search")
+            .col-sm-6(ng-repeat="item in list.info | filter:list.search")
               .well.well-sm
                 .row
                   .col-md-6
@@ -111,7 +111,7 @@ block body
             .col-xs-8
               h2 Results:
               .btn-toolbar
-                button(ng-click="results.setActiveQuestion($index)" ng-repeat="question in results.data.data" ng-class="{'btn-success': question.correct, 'btn-danger': !question.correct}").btn
+                button(ng-click="results.setActiveQuestion($index)" ng-repeat="question in results.questions" ng-class="{'btn-success': question.correct, 'btn-danger': !question.correct}").btn
                   span(ng-class="{'glyphicon-ok': question.correct, 'glyphicon-remove': !question.correct}").glyphicon
             .col-xs-4
               .row
@@ -126,7 +126,7 @@ block body
                   p Incorrect
           .row
             .col-xs-12
-              h2 You Scored {{results.quizMetrics.numCorrect}} / {{results.data.questions.length}}
+              h2 You Scored {{results.quizMetrics.numCorrect}} / {{results.questions.length}}
               h3
                 strong {{results.calculatePerc() | number:2}} %
           .row
@@ -134,14 +134,14 @@ block body
             .well.well-sm.questions
               .row
                 .col-xs-12
-                  h4 {{results.activeQuestion + 1 + '. ' + results.data.questions[results.activeQuestion].text}}
-                  div(ng-if="results.data.questions[results.activeQuestion].type === 'text'").row
-                    div(ng-repeat="answer in results.data.questions[results.activeQuestion].possibilities").col-sm-6
+                  h4 {{results.activeQuestion + 1 + '. ' + results.questions[results.activeQuestion].text}}
+                  div(ng-if="results.questions[results.activeQuestion].type === 'text'").row
+                    div(ng-repeat="answer in results.questions[results.activeQuestion].possibilities").col-sm-6
                      button(ng-class="results.getAnswerClass($index)").btn {{answer.answer}}
-                        p(ng-show="$index !== results.quizMetrics.correctAnswers[results.activeQuestion] && $index === results.data.questions[results.activeQuestion].selected").pull-right Your Answer
+                        p(ng-show="$index !== results.quizMetrics.correctAnswers[results.activeQuestion] && $index === results.questions[results.activeQuestion].selected").pull-right Your Answer
                         p(ng-show="$index === results.quizMetrics.correctAnswers[results.activeQuestion]").pull-right Correct Answer
-                  div(ng-if="results.data.questions[results.activeQuestion].type === 'image'").row
-                    div(ng-repeat="answer in results.data.questions[results.activeQuestion].possibilities").col-sm-6
+                  div(ng-if="results.questions[results.activeQuestion].type === 'image'").row
+                    div(ng-repeat="answer in results.questions[results.activeQuestion].possibilities").col-sm-6
                       button(ng-class="results.getAnswerClass($index)").btn
                         img.image-answer(ng-src="{{answer.answer}}")
             button(ng-click="results.reset()").btn.btn-primary.btn-lg Go back!

@@ -20,7 +20,7 @@
     //  .then(function (response) {
     //    vm.data = response.data;
     //  });
-    vm.data = DataService.data;
+    vm.info = DataService.info;
     
       ////////////////
     

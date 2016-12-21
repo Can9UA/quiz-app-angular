@@ -8,12 +8,10 @@
   
   /* @ngInject */
   function DataService($http) {
-    //var correctAnswers = [1, 2, 3, 0, 2, 0, 3, 2, 0, 3];
-    var correctAnswers = [1, 2, 3, 0, 2, 0, 3, 2];
     var dataObj = {
       //getQuizItemsData: getQuizItemsData,
       //getQuizQuestionsData: getQuizQuestionsData,
-      correctAnswers: correctAnswers
+      correctAnswers: [1, 2, 3, 0, 2, 0, 3, 2]
     }
     
     init();
@@ -23,7 +21,7 @@
     ////////////////
     
     function init() {
-      dataObj.data = [
+      dataObj.info = [
         {
           "type": "Green Turtle",
           "imageUrl": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQmj64-bdrgOIGHJjXLQ75rs0aNWRBEGxcQKagdj6hu82VgIb9B",

@@ -18,7 +18,7 @@
       numCorrect    : 0
     };
   
-    var data = DataService.data;
+    var questions = DataService.questions;
     
     return quizObj;
     
@@ -27,12 +27,12 @@
     function markQuiz() {
       quizObj.correctAnswers = DataService.correctAnswers;
       
-      for (var i = 0, len = data.length; i < len; i++) {
-        if (data[i].selected == quizObj.correctAnswers[i]) {
-          data[i].correct = true;
+      for (var i = 0, len = questions.length; i < len; i++) {
+        if (questions[i].selected == quizObj.correctAnswers[i]) {
+          questions[i].correct = true;
           quizObj.numCorrect++;
         } else {
-          data[i].correct = false;
+          questions[i].correct = false;
         }
       }
     }

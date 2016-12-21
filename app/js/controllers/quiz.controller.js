@@ -18,7 +18,6 @@
     vm.activeQuestion    = 0;
     vm.questionAnswered  = questionAnswered;
     vm.setActiveQuestion = setActiveQuestion;
-    vm.questions         = [];
     vm.selectAnswer      = selectAnswer;
     vm.error             = false;
     vm.finalise          = false;
@@ -31,7 +30,7 @@
     //  });
     vm.questions   = DataService.questions;
     questionsCount = vm.questions.length;
-    vm.data        = DataService.data;
+    vm.info        = DataService.info;
     
     ////////////////
     function finaliseAnswers() {
@@ -46,7 +45,7 @@
     
     function selectAnswer(index) {
       vm.questions[vm.activeQuestion].selected = index;
-      vm.data[vm.activeQuestion].selected = index;
+      vm.info[vm.activeQuestion].selected = index;
     }
     
     function setActiveQuestion(index) {
