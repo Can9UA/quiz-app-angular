@@ -11,14 +11,28 @@
   function ResultsCtrl(QuizMetrics, DataService) {
     var vm = this;
     
-    vm.quizMetrics = QuizMetrics;
-    vm.data = DataService;
-    vm.activeQuestion = 0;
-    vm.getAnswerClass = getAnswerClass;
+    vm.quizMetrics       = QuizMetrics;
+    vm.data              = DataService;
+    vm.activeQuestion    = 0;
+    vm.getAnswerClass    = getAnswerClass;
     vm.setActiveQuestion = setActiveQuestion;
-    vm.calculatePerc = calculatePerc;
+    vm.calculatePerc     = calculatePerc;
+    vm.reset             = reset;
     
     ////////////////
+    
+    function reset() {
+      vm.quizMetrics.changeState('results', false);
+      vm.quizMetrics.numCorrect = 0;
+      
+      for (var i = 0, len = vm.data.questions.length; i < len; i++) {
+        var data = vm.data.questions[i];
+        
+        data.selected = null;
+        data.correct  = null;
+      }
+    }
+    
     function calculatePerc() {
       return (vm.quizMetrics.numCorrect / vm.data.questions.length) * 100;
     }

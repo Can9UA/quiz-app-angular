@@ -144,3 +144,4 @@ block body
                     div(ng-repeat="answer in results.data.questions[results.activeQuestion].possibilities").col-sm-6
                       button(ng-class="results.getAnswerClass($index)").btn
                         img.image-answer(ng-src="{{answer.answer}}")
+            button(ng-click="results.reset()").btn.btn-primary.btn-lg Go back!
